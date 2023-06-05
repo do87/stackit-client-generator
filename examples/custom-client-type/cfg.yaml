@@ -1,0 +1,7 @@
+package: customclienttype
+output: ./examples/custom-client-type/custom-client-type.gen.go
+generate:
+  models: true
+  client: true
+output-options:
+  client-type-name: CustomClientType

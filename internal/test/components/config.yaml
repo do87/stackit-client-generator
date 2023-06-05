@@ -1,0 +1,6 @@
+package: components
+generate:
+  models: true
+output-options:
+  skip-prune: true
+output: components.gen.go

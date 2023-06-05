@@ -1,0 +1,9 @@
+package: packagea
+generate:
+  models: true
+  embedded-spec: true
+output-options:
+  skip-prune: true
+import-mapping:
+  ../packageB/spec.yaml: dev.azure.com/schwarzit/schwarzit.odj.core/_git/stackit-client-generator.git/internal/test/externalref/packageB
+output: externalref.gen.go

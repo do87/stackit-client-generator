@@ -1,0 +1,118 @@
+{{- if not opts.OutputOptions.CustomDoer.Enabled}}
+// Doer performs HTTP requests.
+//
+// The standard http.Client implements this interface.
+type HttpRequestDoer interface {
+	Do(req *http.Request) (*http.Response, error)
+}
+{{- end}}
+{{$doerName :=  iif opts.OutputOptions.CustomDoer.Enabled opts.OutputOptions.CustomDoer.Name "HttpRequestDoer" }}
+{{$generics := opts.OutputOptions.CustomDoer.Generics -}}
+{{$genericsEnabled := ne opts.OutputOptions.CustomDoer.Generics "" -}}
+
+{{$clientTypeName := opts.OutputOptions.ClientTypeName -}}
+
+// {{ $clientTypeName }} which conforms to the OpenAPI3 specification for this service.
+type {{ $clientTypeName }}{{if $genericsEnabled}}[K {{$generics}}]{{end}} struct {
+    // list of connected client services
+    {{range . -}}
+    {{$pname := .PackageName -}}
+    {{$sname := .ServiceName -}}
+        {{$sname}} *{{$pname}}.{{ $clientTypeName }}{{if $genericsEnabled}}[K]{{end}}
+    {{end}}
+	// The endpoint of the server conforming to this interface, with scheme,
+	// https://api.deepmap.com for example. This can contain a path relative
+	// to the server, such as https://api.deepmap.com/dev-test, and all the
+	// paths in the swagger spec will be appended to the server.
+	Server string
+
+	// Doer for performing requests, typically a *http.Client with any
+	// customized settings, such as certificate chains.
+	Client {{$doerName}}{{if $genericsEnabled}}[K]{{end}}
+
+}
+
+// ClientOption allows setting custom parameters during construction
+type ClientOption{{if $genericsEnabled}}[K {{$generics}}]{{end}} func(*{{ $clientTypeName }}{{if $genericsEnabled}}[K]{{end}}) error
+
+func NewRawClient{{if $genericsEnabled}}[K {{$generics}}]{{end}}(server string, opts ...ClientOption{{if $genericsEnabled}}[K]{{end}}) (*{{ $clientTypeName }}{{if $genericsEnabled}}[K]{{end}}, error) {
+    // create a factory client
+    client := {{ $clientTypeName }}{{if $genericsEnabled}}[K]{{end}}{
+        Server: server,
+    }
+    // mutate client and add all optional params
+    for _, o := range opts {
+        if err := o(&client); err != nil {
+            return nil, err
+        }
+    }
+    // ensure the server URL always has a trailing slash
+    if !strings.HasSuffix(client.Server, "/") {
+        client.Server += "/"
+    }
+    {{- if not opts.OutputOptions.CustomDoer.Enabled}}
+    // create httpClient, if not already present
+    if client.Client == nil {
+        client.Client = &http.Client{}
+    }
+    {{- end}}
+    
+    {{range . -}}
+    {{$pname := .PackageName -}}
+    {{$sname := .ServiceName -}}
+    client.{{$sname}} = {{$pname}}.NewRawClient(server, client.Client)
+    {{end}}
+
+    return &client, nil
+}
+
+// WithHTTPClient allows overriding the default Doer, which is
+// automatically created using http.Client. This is useful for tests.
+func WithHTTPClient{{if $genericsEnabled}}[K {{$generics}}]{{end}}(doer {{$doerName}}{{if $genericsEnabled}}[K]{{end}}) ClientOption{{if $genericsEnabled}}[K]{{end}} {
+	return func(c *{{ $clientTypeName }}{{if $genericsEnabled}}[K]{{end}}) error {
+		c.Client = doer
+		return nil
+	}
+}
+
+// WithBaseURL overrides the baseURL.
+func WithBaseURL{{if $genericsEnabled}}[K {{$generics}}]{{end}}(baseURL string) ClientOption{{if $genericsEnabled}}[K]{{end}} {
+	return func(c *{{ $clientTypeName }}{{if $genericsEnabled}}[K]{{end}}) error {
+		newBaseURL, err := url.Parse(baseURL)
+		if err != nil {
+			return err
+		}
+		c.Server = newBaseURL.String()
+		return nil
+	}
+}
+
+// ClientWithResponses builds on rawClientInterface to offer response payloads
+type ClientWithResponses{{if $genericsEnabled}}[K {{$generics}}]{{end}} struct {
+	Client *{{ $clientTypeName }}{{if $genericsEnabled}}[K]{{end}}
+
+    // list of connected client services
+    {{range . -}}
+    {{$pname := .PackageName -}}
+    {{$sname := .ServiceName -}}
+        {{$sname}} *{{$pname}}.{{ $clientTypeName }}WithResponses{{if $genericsEnabled}}[K]{{end}}
+    {{end}}
+}
+
+// NewClient creates a new ClientWithResponses, which wraps
+// Client with return type handling
+func NewClient{{if $genericsEnabled}}[K {{$generics}}]{{end}}(server string, opts ...ClientOption{{if $genericsEnabled}}[K]{{end}}) (*ClientWithResponses{{if $genericsEnabled}}[K]{{end}}, error) {
+    client, err := NewRawClient{{if $genericsEnabled}}[K]{{end}}(server, opts...)
+    if err != nil {
+        return nil, err
+    }
+
+    cwr := &ClientWithResponses{{if $genericsEnabled}}[K]{{end}}{Client: client}
+    {{range . -}}
+    {{$pname := .PackageName -}}
+    {{$sname := .ServiceName -}}
+    cwr.{{$sname}} = {{$pname}}.NewClient(server, client.Client)
+    {{end}}
+
+    return cwr, nil
+}
