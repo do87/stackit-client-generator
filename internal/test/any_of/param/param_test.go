@@ -3,7 +3,7 @@ package param_test
 import (
 	"testing"
 
-	"dev.azure.com/schwarzit/schwarzit.odj.core/_git/stackit-client-generator.git/internal/test/any_of/param"
+	"github.com/do87/stackit-client-generator/internal/test/any_of/param"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 )

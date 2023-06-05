@@ -7,8 +7,8 @@ import (
 	"net/http/httptest"
 	"testing"
 
-	"dev.azure.com/schwarzit/schwarzit.odj.core/_git/stackit-client-generator.git/examples/petstore-expanded/gin/api"
-	"dev.azure.com/schwarzit/schwarzit.odj.core/_git/stackit-client-generator.git/pkg/testutil"
+	"github.com/do87/stackit-client-generator/examples/petstore-expanded/gin/api"
+	"github.com/do87/stackit-client-generator/pkg/testutil"
 	"github.com/stretchr/testify/assert"
 )
 

@@ -3,7 +3,7 @@ package main
 import (
 	"testing"
 
-	"dev.azure.com/schwarzit/schwarzit.odj.core/_git/stackit-client-generator.git/pkg/util"
+	"github.com/do87/stackit-client-generator/pkg/util"
 )
 
 func TestLoader(t *testing.T) {

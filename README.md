@@ -1,6 +1,6 @@
 # OpenAPI Client and Server Code Generator
 
-This repo is a fork of [deepmap/oapi-codegen](https://dev.azure.com/schwarzit/schwarzit.odj.core/_git/stackit-client-generator.git)
+This repo is a fork of [deepmap/oapi-codegen](https://github.com/do87/stackit-client-generator)
 
 Only the changes from the original repo are documented below
 
@@ -84,7 +84,7 @@ in order to load a Doer interface from another package, the following configurat
 output-options:
   custom-doer:
     enabled: true
-    import: skeclient "dev.azure.com/schwarzit/schwarzit.odj.core/_git/stackit-client-generator.git/examples/ske-client"
+    import: skeclient "github.com/do87/stackit-client-generator/examples/ske-client"
     name: "skeclient.HttpRequestDoer"
 ```
 

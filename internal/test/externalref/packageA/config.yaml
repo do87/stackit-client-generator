@@ -5,5 +5,5 @@ generate:
 output-options:
   skip-prune: true
 import-mapping:
-  ../packageB/spec.yaml: dev.azure.com/schwarzit/schwarzit.odj.core/_git/stackit-client-generator.git/internal/test/externalref/packageB
+  ../packageB/spec.yaml: github.com/do87/stackit-client-generator/internal/test/externalref/packageB
 output: externalref.gen.go

@@ -1,7 +1,7 @@
 package cluster
 
 import (
-	"dev.azure.com/schwarzit/schwarzit.odj.core/_git/stackit-client-generator.git/examples/ske-client/generated/cluster"
+	"github.com/do87/stackit-client-generator/examples/ske-client/generated/cluster"
 )
 
 type CreateOrUpdateClusterResponse struct {

@@ -15,7 +15,7 @@ output-options:
     set: "nil"
   custom-doer:
     enabled: true
-    import: skeclient "dev.azure.com/schwarzit/schwarzit.odj.core/_git/stackit-client-generator.git/examples/ske-client"
+    import: skeclient "github.com/do87/stackit-client-generator/examples/ske-client"
     name: "skeclient.HttpRequestDoer"
   copy:
   - from: wait/cluster/wait.go

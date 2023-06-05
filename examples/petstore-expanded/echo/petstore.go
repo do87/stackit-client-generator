@@ -10,8 +10,8 @@ import (
 	"fmt"
 	"os"
 
-	"dev.azure.com/schwarzit/schwarzit.odj.core/_git/stackit-client-generator.git/examples/petstore-expanded/echo/api"
-	"dev.azure.com/schwarzit/schwarzit.odj.core/_git/stackit-client-generator.git/pkg/middleware"
+	"github.com/do87/stackit-client-generator/examples/petstore-expanded/echo/api"
+	"github.com/do87/stackit-client-generator/pkg/middleware"
 	"github.com/labstack/echo/v4"
 	echomiddleware "github.com/labstack/echo/v4/middleware"
 )

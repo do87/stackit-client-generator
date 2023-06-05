@@ -26,7 +26,7 @@ import (
 	"strings"
 	"time"
 
-	"dev.azure.com/schwarzit/schwarzit.odj.core/_git/stackit-client-generator.git/pkg/types"
+	"github.com/do87/stackit-client-generator/pkg/types"
 )
 
 // Parameter escaping works differently based on where a header is found
@@ -67,7 +67,7 @@ func StyleParamWithLocation(style string, explode bool, paramName string, paramL
 	}
 
 	// If the value implements encoding.TextMarshaler we use it for marshaling
-	// https://dev.azure.com/schwarzit/schwarzit.odj.core/_git/stackit-client-generator.git/issues/504
+	// https://github.com/do87/stackit-client-generator/issues/504
 	if tu, ok := value.(encoding.TextMarshaler); ok {
 		t := reflect.Indirect(reflect.ValueOf(value)).Type()
 		convertableToTime := t.ConvertibleTo(reflect.TypeOf(time.Time{}))

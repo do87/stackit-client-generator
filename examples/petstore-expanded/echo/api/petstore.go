@@ -12,8 +12,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-//go:generate go run dev.azure.com/schwarzit/schwarzit.odj.core/_git/stackit-client-generator.git/cmd/oapi-codegen --config=models.cfg.yaml ../../petstore-expanded.yaml
-//go:generate go run dev.azure.com/schwarzit/schwarzit.odj.core/_git/stackit-client-generator.git/cmd/oapi-codegen --config=server.cfg.yaml ../../petstore-expanded.yaml
+//go:generate go run github.com/do87/stackit-client-generator/cmd/oapi-codegen --config=models.cfg.yaml ../../petstore-expanded.yaml
+//go:generate go run github.com/do87/stackit-client-generator/cmd/oapi-codegen --config=server.cfg.yaml ../../petstore-expanded.yaml
 
 package api
 
@@ -22,7 +22,7 @@ import (
 	"net/http"
 	"sync"
 
-	"dev.azure.com/schwarzit/schwarzit.odj.core/_git/stackit-client-generator.git/examples/petstore-expanded/echo/api/models"
+	"github.com/do87/stackit-client-generator/examples/petstore-expanded/echo/api/models"
 	"github.com/labstack/echo/v4"
 )
 

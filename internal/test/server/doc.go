@@ -1,6 +1,6 @@
 package server
 
-//go:generate go run dev.azure.com/schwarzit/schwarzit.odj.core/_git/stackit-client-generator.git/cmd/oapi-codegen --config=config.yaml ../test-schema.yaml
+//go:generate go run github.com/do87/stackit-client-generator/cmd/oapi-codegen --config=config.yaml ../test-schema.yaml
 
 // This is commented out because the server_mog.gen.go keeps changing for no good reason, and
 // so, precommit checks fail. We need to regenerate this file occasionally manually.

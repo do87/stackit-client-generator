@@ -4,7 +4,7 @@ import (
 	"crypto/ecdsa"
 	"fmt"
 
-	"dev.azure.com/schwarzit/schwarzit.odj.core/_git/stackit-client-generator.git/pkg/ecdsafile"
+	"github.com/do87/stackit-client-generator/pkg/ecdsafile"
 	"github.com/lestrrat-go/jwx/jwa"
 	"github.com/lestrrat-go/jwx/jwk"
 	"github.com/lestrrat-go/jwx/jws"

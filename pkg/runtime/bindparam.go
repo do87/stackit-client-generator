@@ -23,7 +23,7 @@ import (
 	"strings"
 	"time"
 
-	"dev.azure.com/schwarzit/schwarzit.odj.core/_git/stackit-client-generator.git/pkg/types"
+	"github.com/do87/stackit-client-generator/pkg/types"
 )
 
 // BindStyledParameter binds a parameter as described in the Path Parameters

@@ -3,7 +3,7 @@ package grabimportnames
 import (
 	"testing"
 
-	"dev.azure.com/schwarzit/schwarzit.odj.core/_git/stackit-client-generator.git/pkg/codegen"
+	"github.com/do87/stackit-client-generator/pkg/codegen"
 	"github.com/getkin/kin-openapi/openapi3"
 	"github.com/stretchr/testify/require"
 )

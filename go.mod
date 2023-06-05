@@ -1,4 +1,4 @@
-module dev.azure.com/schwarzit/schwarzit.odj.core/_git/stackit-client-generator.git
+module github.com/do87/stackit-client-generator
 
 require (
 	github.com/SchwarzIT/community-stackit-go-client v1.2.5

@@ -23,7 +23,7 @@ import (
 	"text/template"
 	"unicode"
 
-	"dev.azure.com/schwarzit/schwarzit.odj.core/_git/stackit-client-generator.git/pkg/util"
+	"github.com/do87/stackit-client-generator/pkg/util"
 	"github.com/getkin/kin-openapi/openapi3"
 )
 

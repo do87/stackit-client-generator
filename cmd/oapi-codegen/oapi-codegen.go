@@ -25,8 +25,8 @@ import (
 	"golang.org/x/tools/imports"
 	"gopkg.in/yaml.v2"
 
-	"dev.azure.com/schwarzit/schwarzit.odj.core/_git/stackit-client-generator.git/pkg/codegen"
-	"dev.azure.com/schwarzit/schwarzit.odj.core/_git/stackit-client-generator.git/pkg/util"
+	"github.com/do87/stackit-client-generator/pkg/codegen"
+	"github.com/do87/stackit-client-generator/pkg/util"
 )
 
 func errExit(format string, args ...interface{}) {

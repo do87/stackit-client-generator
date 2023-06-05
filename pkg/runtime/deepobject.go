@@ -11,7 +11,7 @@ import (
 	"strings"
 	"time"
 
-	"dev.azure.com/schwarzit/schwarzit.odj.core/_git/stackit-client-generator.git/pkg/types"
+	"github.com/do87/stackit-client-generator/pkg/types"
 )
 
 func marshalDeepObject(in interface{}, path []string) ([]string, error) {

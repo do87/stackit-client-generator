@@ -7,7 +7,7 @@ import (
 	"net/http/httptest"
 	"testing"
 
-	"dev.azure.com/schwarzit/schwarzit.odj.core/_git/stackit-client-generator.git/pkg/testutil"
+	"github.com/do87/stackit-client-generator/pkg/testutil"
 	"github.com/labstack/echo/v4"
 	"github.com/labstack/echo/v4/middleware"
 	"github.com/stretchr/testify/assert"

@@ -4,8 +4,8 @@ import (
 	"context"
 	"net/http"
 
-	"dev.azure.com/schwarzit/schwarzit.odj.core/_git/stackit-client-generator.git/examples/ske-client/generated/cluster"
 	"github.com/SchwarzIT/community-stackit-go-client/pkg/wait"
+	"github.com/do87/stackit-client-generator/examples/ske-client/generated/cluster"
 )
 
 func (r CreateOrUpdateClusterResponse) WaitHandler(ctx context.Context, c *cluster.ClientWithResponses, projectID, clusterName string) *wait.Handler {

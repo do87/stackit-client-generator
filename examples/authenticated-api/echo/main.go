@@ -5,8 +5,8 @@ import (
 	"fmt"
 	"log"
 
-	"dev.azure.com/schwarzit/schwarzit.odj.core/_git/stackit-client-generator.git/examples/authenticated-api/echo/api"
-	"dev.azure.com/schwarzit/schwarzit.odj.core/_git/stackit-client-generator.git/examples/authenticated-api/echo/server"
+	"github.com/do87/stackit-client-generator/examples/authenticated-api/echo/api"
+	"github.com/do87/stackit-client-generator/examples/authenticated-api/echo/server"
 	"github.com/labstack/echo/v4"
 	"github.com/labstack/echo/v4/middleware"
 )

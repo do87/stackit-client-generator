@@ -7,9 +7,9 @@ import (
 	"net/http/httptest"
 	"testing"
 
-	"dev.azure.com/schwarzit/schwarzit.odj.core/_git/stackit-client-generator.git/examples/petstore-expanded/chi/api"
-	middleware "dev.azure.com/schwarzit/schwarzit.odj.core/_git/stackit-client-generator.git/pkg/chi-middleware"
-	"dev.azure.com/schwarzit/schwarzit.odj.core/_git/stackit-client-generator.git/pkg/testutil"
+	"github.com/do87/stackit-client-generator/examples/petstore-expanded/chi/api"
+	middleware "github.com/do87/stackit-client-generator/pkg/chi-middleware"
+	"github.com/do87/stackit-client-generator/pkg/testutil"
 	"github.com/go-chi/chi/v5"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"

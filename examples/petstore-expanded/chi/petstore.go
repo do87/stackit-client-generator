@@ -11,8 +11,8 @@ import (
 	"net/http"
 	"os"
 
-	"dev.azure.com/schwarzit/schwarzit.odj.core/_git/stackit-client-generator.git/examples/petstore-expanded/chi/api"
-	middleware "dev.azure.com/schwarzit/schwarzit.odj.core/_git/stackit-client-generator.git/pkg/chi-middleware"
+	"github.com/do87/stackit-client-generator/examples/petstore-expanded/chi/api"
+	middleware "github.com/do87/stackit-client-generator/pkg/chi-middleware"
 	"github.com/go-chi/chi/v5"
 )
 

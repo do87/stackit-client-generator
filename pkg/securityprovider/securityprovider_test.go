@@ -3,7 +3,7 @@ package securityprovider
 import (
 	"testing"
 
-	"dev.azure.com/schwarzit/schwarzit.odj.core/_git/stackit-client-generator.git/internal/test/client"
+	"github.com/do87/stackit-client-generator/internal/test/client"
 	"github.com/stretchr/testify/assert"
 )
 

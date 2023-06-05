@@ -3,8 +3,8 @@ package externalref
 import (
 	"testing"
 
-	packageA "dev.azure.com/schwarzit/schwarzit.odj.core/_git/stackit-client-generator.git/internal/test/externalref/packageA"
-	packageB "dev.azure.com/schwarzit/schwarzit.odj.core/_git/stackit-client-generator.git/internal/test/externalref/packageB"
+	packageA "github.com/do87/stackit-client-generator/internal/test/externalref/packageA"
+	packageB "github.com/do87/stackit-client-generator/internal/test/externalref/packageB"
 	"github.com/stretchr/testify/require"
 )
 

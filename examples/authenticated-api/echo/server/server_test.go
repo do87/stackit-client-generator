@@ -4,8 +4,8 @@ import (
 	"net/http"
 	"testing"
 
-	"dev.azure.com/schwarzit/schwarzit.odj.core/_git/stackit-client-generator.git/examples/authenticated-api/echo/api"
-	"dev.azure.com/schwarzit/schwarzit.odj.core/_git/stackit-client-generator.git/pkg/testutil"
+	"github.com/do87/stackit-client-generator/examples/authenticated-api/echo/api"
+	"github.com/do87/stackit-client-generator/pkg/testutil"
 	"github.com/labstack/echo/v4"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
