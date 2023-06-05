@@ -6,7 +6,7 @@ import (
 	"net/url"
 	"testing"
 
-	"dev.azure.com/schwarzit/schwarzit.odj.core/_git/stackit-client-generator.git/pkg/types"
+	"github.com/do87/stackit-client-generator/pkg/types"
 	"github.com/stretchr/testify/assert"
 )
 

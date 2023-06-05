@@ -8,9 +8,9 @@ import (
 	"net/http"
 	"testing"
 
-	examplePetstoreClient "dev.azure.com/schwarzit/schwarzit.odj.core/_git/stackit-client-generator.git/examples/petstore-expanded"
-	examplePetstore "dev.azure.com/schwarzit/schwarzit.odj.core/_git/stackit-client-generator.git/examples/petstore-expanded/echo/api"
-	"dev.azure.com/schwarzit/schwarzit.odj.core/_git/stackit-client-generator.git/pkg/util"
+	examplePetstoreClient "github.com/do87/stackit-client-generator/examples/petstore-expanded"
+	examplePetstore "github.com/do87/stackit-client-generator/examples/petstore-expanded/echo/api"
+	"github.com/do87/stackit-client-generator/pkg/util"
 	"github.com/getkin/kin-openapi/openapi3"
 	"github.com/golangci/lint-1"
 	"github.com/stretchr/testify/assert"
@@ -20,7 +20,7 @@ import (
 const (
 	remoteRefFile = `https://raw.githubusercontent.com/deepmap/oapi-codegen/master/examples/petstore-expanded` +
 		`/petstore-expanded.yaml`
-	remoteRefImport = `dev.azure.com/schwarzit/schwarzit.odj.core/_git/stackit-client-generator.git/examples/petstore-expanded`
+	remoteRefImport = `github.com/do87/stackit-client-generator/examples/petstore-expanded`
 )
 
 func checkLint(t *testing.T, filename string, code []byte) {
@@ -268,7 +268,7 @@ func TestRemoteExternalReference(t *testing.T) {
 	assert.Contains(t, code, "package api")
 
 	// Check import
-	assert.Contains(t, code, `externalRef0 "dev.azure.com/schwarzit/schwarzit.odj.core/_git/stackit-client-generator.git/examples/petstore-expanded"`)
+	assert.Contains(t, code, `externalRef0 "github.com/do87/stackit-client-generator/examples/petstore-expanded"`)
 
 	// Check generated oneOf structure:
 	assert.Contains(t, code, `
