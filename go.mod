@@ -14,7 +14,7 @@ require (
 	github.com/matryer/moq v0.3.1
 	github.com/pkg/errors v0.9.1
 	github.com/stretchr/testify v1.8.3
-	golang.org/x/text v0.9.0
+	golang.org/x/text v0.11.0
 	golang.org/x/tools v0.6.0
 	gopkg.in/yaml.v2 v2.4.0
 )
