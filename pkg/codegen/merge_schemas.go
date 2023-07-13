@@ -212,10 +212,10 @@ func mergeOpenapiSchemas(s1, s2 openapi3.Schema) (openapi3.Schema, error) {
 	if SchemaHasAdditionalProperties(&s1) && SchemaHasAdditionalProperties(&s2) {
 		return openapi3.Schema{}, errors.New("merging two schemas with additional properties, this is unhandled")
 	}
-	if s1.AdditionalProperties != nil {
+	if s1.AdditionalProperties.Has != nil || s1.AdditionalProperties.Schema != nil {
 		result.AdditionalProperties = s1.AdditionalProperties
 	}
-	if s2.AdditionalProperties != nil {
+	if s2.AdditionalProperties.Has != nil || s2.AdditionalProperties.Schema != nil {
 		result.AdditionalProperties = s2.AdditionalProperties
 	}
 
