@@ -394,6 +394,10 @@ func findComponentRefs(swagger *openapi3.T) []string {
 func removeOrphanedComponents(swagger *openapi3.T, refs []string) int {
 	countRemoved := 0
 
+	if swagger.Components == nil {
+		return countRemoved
+	}
+
 	for key := range swagger.Components.Schemas {
 		ref := fmt.Sprintf("#/components/schemas/%s", key)
 		if !stringInSlice(ref, refs) {
