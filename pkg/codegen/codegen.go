@@ -462,6 +462,9 @@ func addExtendedResponseImports(opts Configuration, importasSlice []string) []st
 }
 
 func GenerateTypeDefinitions(t *template.Template, swagger *openapi3.T, ops []OperationDefinition, excludeSchemas []string) (string, error) {
+	if swagger.Components == nil {
+		return "", nil
+	}
 	schemaTypes, err := GenerateTypesForSchemas(t, swagger.Components.Schemas, excludeSchemas)
 	if err != nil {
 		return "", fmt.Errorf("error generating Go types for component schemas: %w", err)
