@@ -994,6 +994,9 @@ func OperationImports(ops []OperationDefinition) (map[string]goImport, error) {
 
 func GetTypeDefinitionsImports(swagger *openapi3.T, excludeSchemas []string) (map[string]goImport, error) {
 	res := map[string]goImport{}
+	if swagger.Components == nil {
+		return res, nil
+	}
 	schemaImports, err := GetSchemaImports(swagger.Components.Schemas, excludeSchemas)
 	if err != nil {
 		return nil, err
