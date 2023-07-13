@@ -147,6 +147,9 @@ func tidySchemasInPaths(w io.Writer, s *openapi3.T, rule TidyRule) {
 }
 
 func tidySchemasInComp(w io.Writer, s *openapi3.T, rule TidyRule) {
+	if s.Components == nil {
+		return
+	}
 	sc := s.Components.Schemas
 	for k, v := range sc {
 		newK := DoTidy(w, rule, k)
