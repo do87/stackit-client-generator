@@ -126,8 +126,8 @@ func (pd ParameterDefinition) GoVariableName() string {
 
 func (pd ParameterDefinition) GoName() string {
 	goName := pd.ParamName
-	if _, ok := pd.Spec.ExtensionProps.Extensions[extGoName]; ok {
-		if extGoFieldName, err := extParseGoFieldName(pd.Spec.ExtensionProps.Extensions[extGoName]); err == nil {
+	if _, ok := pd.Spec.Extensions[extGoName]; ok {
+		if extGoFieldName, err := extParseGoFieldName(pd.Spec.Extensions[extGoName]); err == nil {
 			goName = extGoFieldName
 		}
 	}
@@ -830,7 +830,7 @@ func GenerateParamsTypes(op OperationDefinition) []TypeDefinition {
 			Required:       param.Required,
 			Schema:         pSchema,
 			NeedsFormTag:   param.Style() == "form",
-			ExtensionProps: &param.Spec.ExtensionProps,
+			ExtensionProps: param.Spec.Extensions,
 		}
 		s.Properties = append(s.Properties, prop)
 	}

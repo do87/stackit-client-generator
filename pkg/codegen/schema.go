@@ -83,7 +83,7 @@ type Property struct {
 	ReadOnly       bool
 	WriteOnly      bool
 	NeedsFormTag   bool
-	ExtensionProps *openapi3.ExtensionProps
+	ExtensionProps map[string]interface{}
 }
 
 func (p Property) GoFieldName() string {
@@ -308,8 +308,8 @@ func GenerateGoSchema(sref *openapi3.SchemaRef, path []string) (Schema, error) {
 
 			// If additional properties are defined, we will override the default
 			// above with the specific definition.
-			if schema.AdditionalProperties != nil {
-				additionalSchema, err := GenerateGoSchema(schema.AdditionalProperties, path)
+			if schema.AdditionalProperties.Schema != nil {
+				additionalSchema, err := GenerateGoSchema(schema.AdditionalProperties.Schema, path)
 				if err != nil {
 					return Schema{}, fmt.Errorf("error generating type for additional properties: %w", err)
 				}
@@ -386,7 +386,7 @@ func GenerateGoSchema(sref *openapi3.SchemaRef, path []string) (Schema, error) {
 					Nullable:       p.Value.Nullable,
 					ReadOnly:       p.Value.ReadOnly,
 					WriteOnly:      p.Value.WriteOnly,
-					ExtensionProps: &p.Value.ExtensionProps,
+					ExtensionProps: p.Value.Extensions,
 				}
 				outSchema.Properties = append(outSchema.Properties, prop)
 			}
@@ -595,8 +595,8 @@ func GenFieldsFromProperties(props []Property) []string {
 		field := ""
 
 		goFieldName := tidyFieldName(p.GoFieldName())
-		if _, ok := p.ExtensionProps.Extensions[extGoName]; ok {
-			if extGoFieldName, err := extParseGoFieldName(p.ExtensionProps.Extensions[extGoName]); err == nil {
+		if _, ok := p.ExtensionProps[extGoName]; ok {
+			if extGoFieldName, err := extParseGoFieldName(p.ExtensionProps[extGoName]); err == nil {
 				goFieldName = extGoFieldName
 			}
 		}
@@ -615,8 +615,8 @@ func GenFieldsFromProperties(props []Property) []string {
 
 		// Support x-omitempty
 		overrideOmitEmpty := true
-		if _, ok := p.ExtensionProps.Extensions[extPropOmitEmpty]; ok {
-			if extOmitEmpty, err := extParseOmitEmpty(p.ExtensionProps.Extensions[extPropOmitEmpty]); err == nil {
+		if _, ok := p.ExtensionProps[extPropOmitEmpty]; ok {
+			if extOmitEmpty, err := extParseOmitEmpty(p.ExtensionProps[extPropOmitEmpty]); err == nil {
 				overrideOmitEmpty = extOmitEmpty
 			}
 		}
@@ -636,14 +636,14 @@ func GenFieldsFromProperties(props []Property) []string {
 		}
 
 		// Support x-go-json-ignore
-		if _, ok := p.ExtensionProps.Extensions[extPropGoJsonIgnore]; ok {
-			if goJsonIgnore, err := extParseGoJsonIgnore(p.ExtensionProps.Extensions[extPropGoJsonIgnore]); err == nil && goJsonIgnore {
+		if _, ok := p.ExtensionProps[extPropGoJsonIgnore]; ok {
+			if goJsonIgnore, err := extParseGoJsonIgnore(p.ExtensionProps[extPropGoJsonIgnore]); err == nil && goJsonIgnore {
 				fieldTags["json"] = "-"
 			}
 		}
 
 		// Support x-oapi-codegen-extra-tags
-		if extension, ok := p.ExtensionProps.Extensions[extPropExtraTags]; ok {
+		if extension, ok := p.ExtensionProps[extPropExtraTags]; ok {
 			if tags, err := extExtraTags(extension); err == nil {
 				keys := SortedStringKeys(tags)
 				for _, k := range keys {
